@@ -1,18 +1,13 @@
 #!/bin/bash -x
-read -p "Enter Last Name: " last_name
 
-last_name_pattern="^[[:upper:]]{1,}"
+read -p "Enter Email Address: " email_address
 
-last_name_count=${#last_name}
+email_address_pattern="(^[a-zA-Z0-9]+)([.]{0,})([a-zA-Z0-9]+)([@]{1})([a-zA-Z]+)([.]{0,1})([a-zA-Z]{0,4})([.]{0,1})([a-z]{0,2})"
 
-if [ $last_name_count -ge 3 ]
+
+if [[ $email_address =~ $email_address_pattern ]]
 then
-        if [[ $last_name =~ $last_name_pattern ]]
-        then
-                echo "Last name is valid"
-        else
-                echo "Last name is invalid"
-        fi
+       echo "It is valid email address"
 else
-        echo "Entered last name does not contain minimum 3 characters"
+       echo "The email address is not valid"
 fi
