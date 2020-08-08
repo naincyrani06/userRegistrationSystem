@@ -1,13 +1,12 @@
 #!/bin/bash -x
 
-read -p "Enter Email Address: " email_address
+read -p "Enter Mobile Number (Format:- 91 8967456789): " mobile_number
 
-email_address_pattern="(^[a-zA-Z0-9]+)([.]{0,})([a-zA-Z0-9]+)([@]{1})([a-zA-Z]+)([.]{0,1})([a-zA-Z]{0,4})([.]{0,1})([a-z]{0,2})"
+mobile_number_pattern="((^[0-9]{2,3})[' '](([7-9]{1})[0-9]{9}))$"
 
-
-if [[ $email_address =~ $email_address_pattern ]]
+if [[ $mobile_number =~ $mobile_number_pattern ]]
 then
-       echo "It is valid email address"
+       echo "Entered Mobile Number is Valid"
 else
-       echo "The email address is not valid"
+       echo "Entered Mobile Number is not Valid"
 fi
