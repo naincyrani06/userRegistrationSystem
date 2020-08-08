@@ -1,12 +1,13 @@
 #!/bin/bash -x
 
-read -p "Enter Mobile Number (Format:- 91 8967456789): " mobile_number
+read -p "Enter the password: " password
 
-mobile_number_pattern="((^[0-9]{2,3})[' '](([7-9]{1})[0-9]{9}))$"
+password_pattern="^[a-zA-Z0-9#@_.-]{8,}$"
 
-if [[ $mobile_number =~ $mobile_number_pattern ]]
+
+if [[ $password =~ $password_pattern ]]
 then
-       echo "Entered Mobile Number is Valid"
+       echo "Entered Password is valid"
 else
-       echo "Entered Mobile Number is not Valid"
+       echo "Entered Password is not valid"
 fi
