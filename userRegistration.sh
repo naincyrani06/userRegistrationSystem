@@ -1,10 +1,9 @@
 #!/bin/bash -x
-read -p "Enter the password: " password
-pattern=$(($(tr -d '[[:alnum:]]' <<< $password | wc -m)-1))
-
-if[[${#password} -ge 8 && $password==*[[:upper:]]* && $pattern==*[0-9]* && $pattern -eq 1]]
+read -p "Enter the email: " email
+Pattern="^[a-zA-Z0-9]{3,15}(|[.|_|%|+|-]?[a-zA-Z0-9]+)@[a-zA-Z0-9]{1,15}(.[a-z]{2,4})(|[.]?[a-z]{2,4})$"
+if [[ $email =~ $Pattern ]]
 then
-	echo "Valid"
+	echo "Email is Valid"
 else
-	echo "Invalid"
+	echo "Email is Invalid"
 fi
