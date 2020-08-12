@@ -1,18 +1,10 @@
 #!/bin/bash -x
-read -p "Enter the password having 8 Characters With Minimum 1 Upper Case Letter: " password
-if [ ${#password} -ge 8 ]
+read -p "Enter the password: " password
+pattern=$(($(tr -d '[[:alnum:]]' <<< $password | wc -m)-1))
+
+if[[${#password} -ge 8 && $password==*[[:upper:]]* && $pattern==*[0-9]* && $pattern -eq 1]]
 then
-       if [[ $password == *[[:upper:]]* ]]
-       then
-		echo "Valid"
-		if [[ $password == *[0-9]* ]]
-		then
-			echo "Password is Valid"
-		else
-			echo "Password is Invalid"
-		fi
-		else
-			echo "Enter one upper case"
-       fi
+	echo "Valid"
 else
-        echo "Password is invalid"
+	echo "Invalid"
+fi
